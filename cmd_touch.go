@@ -9,10 +9,10 @@ import (
 	"path/filepath"
 )
 
-type syncCmd struct {
+type touchCmd struct {
 }
 
-func (t *syncCmd) Run(env *TestEnv, args []string) error {
+func (t *touchCmd) Run(env *TestEnv, args []string) error {
 	dirs := []string{
 		env.Lhs,
 		env.Rhs,
@@ -57,12 +57,12 @@ func (t *syncCmd) Run(env *TestEnv, args []string) error {
 	return nil
 }
 
-func (t *syncCmd) Name() string {
-	return "sync"
+func (t *touchCmd) Name() string {
+	return "touch"
 }
 
-var _ Cmd = &syncCmd{}
+var _ Cmd = &touchCmd{}
 
 func init() {
-	RegisterCommand(&syncCmd{})
+	RegisterCommand(&touchCmd{})
 }
