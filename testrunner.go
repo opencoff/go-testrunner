@@ -4,6 +4,7 @@ package testrunner
 
 import (
 	"errors"
+	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -215,7 +216,7 @@ func (tr *TestRunner) makeEnv(tname string) (*TestEnv, error) {
 	lhs := filepath.Join(tmpdir, "lhs")
 	rhs := filepath.Join(tmpdir, "rhs")
 	logfile := filepath.Join(tmpdir, "test.log")
-	if tr.LogStdout {
+	if tr.LogStdout || *logStdout {
 		logfile = "STDOUT"
 	}
 
@@ -250,3 +251,6 @@ func (t *TestEnv) String() string {
 		t.TestName, t.TestRoot, t.Lhs, t.Rhs)
 	return s
 }
+
+
+var logStdout = flag.Bool("log-stdout", false, "Send logs to stdout")
