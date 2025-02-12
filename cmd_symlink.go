@@ -49,6 +49,7 @@ func (t *symlinkCmd) symlink(key string, vals []string, env *TestEnv) error {
 		newnm := nm[:i]
 		oldnm := nm[i+1:]
 
+		env.Log.Debug("symlink (new) %s -> (old) %s", newnm, oldnm)
 		if !filepath.IsAbs(oldnm) {
 			oldnm = filepath.Join(base, oldnm)
 		}

@@ -18,6 +18,8 @@ func (t *touchCmd) Run(env *TestEnv, args []string) error {
 		env.Rhs,
 	}
 
+	env.Log.Debug("touch --recurse %s %s", env.Lhs, env.Rhs)
+
 	// first adjtime for all non-dir entries
 	now := env.Start
 	for _, dn := range dirs {

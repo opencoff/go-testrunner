@@ -43,7 +43,7 @@ func (t *mkfileCmd) Run(env *TestEnv, args []string) error {
 		return fmt.Errorf("mkfile: %w", err)
 	}
 
-	env.Log.Debug("mkfile: '%s': sizes: min %d max %d\n", mk.target,
+	env.Log.Debug("%s: '%s': sizes: min %d max %d\n", t.Name(), mk.target,
 		mk.minsz.Value(), mk.maxsz.Value())
 
 	args = fs.Args()

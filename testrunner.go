@@ -252,5 +252,4 @@ func (t *TestEnv) String() string {
 	return s
 }
 
-
 var logStdout = flag.Bool("log-stdout", false, "Send logs to stdout")
