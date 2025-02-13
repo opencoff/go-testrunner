@@ -7,6 +7,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"time"
 )
 
 type touchCmd struct {
@@ -21,7 +22,7 @@ func (t *touchCmd) Run(env *TestEnv, args []string) error {
 	env.Log.Debug("touch --recurse %s %s", env.Lhs, env.Rhs)
 
 	// first adjtime for all non-dir entries
-	now := env.Start
+	now := time.Now().UTC()
 	for _, dn := range dirs {
 		err := filepath.Walk(dn, func(p string, fi fs.FileInfo, err error) error {
 			if fi.IsDir() {
