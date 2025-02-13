@@ -24,7 +24,7 @@ func mkdir(dn string, tm time.Time) error {
 		}
 	}
 
-	return os.Chtimes(dn, tm, tm)
+	return nil
 }
 
 // make a random file of size 'size'; caller must ensure that
@@ -61,7 +61,7 @@ func mkfile(fn string, size int64, tm time.Time) error {
 		return err
 	}
 
-	return os.Chtimes(fn, tm, tm)
+	return nil
 }
 
 // copy a file and keep the timestamps
@@ -112,10 +112,6 @@ func copyfile(dst, src string) error {
 		}
 	}
 
-	mtime := lst.ModTime()
-	if err = os.Chtimes(dst, mtime, mtime); err != nil {
-		return fmt.Errorf("copyfile: chtimes %s: %w", dst, err)
-	}
 	return nil
 }
 
